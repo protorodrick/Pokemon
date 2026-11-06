@@ -10,6 +10,21 @@ and none should be added.** Ripped models or game files would get the experience
 Roblox (DMCA) and put your account at risk. To make it look better, add your own or properly
 licensed models (see *Custom models* below).
 
+## ⚡ Quick start (one click)
+
+1. Download **[`build/Tidewild.rbxlx`](build/Tidewild.rbxlx)**. On GitHub, open the file and click the **Download raw file** button.
+2. **Double-click** it on your laptop. Roblox Studio opens with everything already in place.
+3. Press **Play** (F5). The island builds itself and the game starts.
+
+To publish it: **File → Publish to Roblox**, then turn on **Game Settings → Security → Enable Studio Access to API Services**
+so saves work. To test trading and battles between players, use **Test → Clients and Servers → 2 players → Start**.
+
+**Alternative, paste into a place you already have open:** open [`build/Tidewild_Installer.luau`](build/Tidewild_Installer.luau),
+copy all of it, paste it into Studio's **View → Command Bar**, and press Enter. Then press Play.
+
+**After editing code in `src/`:** run `python3 tools/build_place.py` to rebuild both files. Python 3 is the only
+requirement.
+
 ## Features
 
 | System | What it does |
@@ -33,7 +48,7 @@ licensed models (see *Custom models* below).
 
 ## Getting it into Roblox Studio
 
-### Option A — Rojo (recommended)
+### Option A — Rojo (live sync while coding)
 1. Install [Rojo](https://rojo.space) (CLI and the Studio plugin).
 2. In this folder run `rojo serve`, open a new Baseplate in Studio, and click **Connect** in the Rojo plugin.
    Or build a place file: `rojo build -o Tidewild.rbxlx`, then open it in Studio.
