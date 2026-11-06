@@ -2,17 +2,13 @@
 -- (View > Command Bar) and press Enter. Re-running replaces the previous install.
 local function make(cls, name, parent)
 	local existing = parent:FindFirstChild(name)
-	if existing and existing.ClassName == cls and (cls == 'Folder' or cls == 'StarterPlayerScripts') then return existing end
+	if existing and existing.ClassName == cls and cls == 'Folder' then return existing end
 	if existing then existing:Destroy() end
 	local i = Instance.new(cls)
 	i.Name = name
 	i.Parent = parent
 	return i
 end
-pcall(function() workspace.StreamingEnabled = true end)
-local L = game:GetService('Lighting')
-L.ClockTime = 14; L.Brightness = 2.5; L.GlobalShadows = true
-pcall(function() L.Technology = Enum.Technology.Future end)
 local base = workspace:FindFirstChild('Baseplate'); if base then base:Destroy() end
 local n1 = make("Folder", "Shared", game:GetService('ReplicatedStorage'))
 local n2 = make("ModuleScript", "BattleEngine", n1)
@@ -4245,4 +4241,9 @@ end
 
 return Renderer
 ]]
+pcall(function() game:GetService('Workspace').StreamingEnabled = true end)
+pcall(function() game:GetService('Lighting').ClockTime = 14 end)
+pcall(function() game:GetService('Lighting').Brightness = 2.5 end)
+pcall(function() game:GetService('Lighting').GlobalShadows = true end)
+pcall(function() game:GetService('Lighting').Technology = Enum.Technology.Future end)
 print('[Tidewild] Installed! Press Play (F5) to start.')

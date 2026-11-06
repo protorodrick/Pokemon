@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactive 3D Particle System with Central RGB Orb and Ring</title>
+    <style>
+        body, html { height: 100%; margin: 0; }
+        canvas { display: block; width: 100%; height: 100% }
+    </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+    let scene, camera, renderer, particleSystem, centralOrb, wireframeRing;
+    const particleCount = 1000, clock = new THREE.Clock();
+
+    function initScene() {
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Enlarge the central RGB rotating wireframe orb
+        const orbGeometry = new THREE.SphereGeometry(30, 32, 32); // Increased radius to 30
+        const orbMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+        centralOrb = new THREE.Mesh(orbGeometry, orbMaterial);
+        scene.add(centralOrb);
+
+        // Add a 3D wireframe ring around the orb
+        const ringGeometry = new THREE.TorusGeometry(45, 1.5, 16, 100); // Outer radius 45, tube radius 1.5
+        const ringMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+        wireframeRing = new THREE.Mesh(ringGeometry, ringMaterial);
+        scene.add(wireframeRing);
+
+        camera.position.z = 300;
+    }
+
+    function createParticles() {
+        const geometry = new THREE.BufferGeometry();
+        const positions = [];
+        const colors = [];
+        const color = new THREE.Color();
+
+        for (let i = 0; i < particleCount; i++) {
+            // Positions
+            const x = Math.random() * 500 - 250;
+            const y = Math.random() * 500 - 250;
+            const z = Math.random() * 500 - 250;
+            positions.push(x, y, z);
+
+            // Colors
+            const vx = (x / 500) + 0.5;
+            const vy = (y / 500) + 0.5;
+            const vz = (z / 500) + 0.5;
+            color.setRGB(vx, vy, vz);
+            colors.push(color.r, color.g, color.b);
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({ size: 2, vertexColors: true });
+        particleSystem = new THREE.Points(geometry, material);
+
+        scene.add(particleSystem);
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+
+        const elapsedTime = clock.getElapsedTime();
+
+        // Rotate the particle system
+        particleSystem.rotation.y = elapsedTime * 0.05;
+
+        // Rotate and update orb color
+        centralOrb.rotation.x += 0.01;
+        centralOrb.rotation.y += 0.01;
+        centralOrb.material.color.setHSL(elapsedTime * 0.1 % 1, 1, 0.5);
+
+        // Rotate the wireframe ring
+        wireframeRing.rotation.x += 0.005;
+        wireframeRing.rotation.y += 0.01;
+
+        // Update particle colors
+        const positions = particleSystem.geometry.attributes.position.array;
+        const colors = particleSystem.geometry.attributes.color.array;
+        for (let i = 0; i < particleCount; i++) {
+            // Update color based on position and time
+            const index = i * 3;
+            const x = positions[index];
+            const y = positions[index + 1];
+            const z = positions[index + 2];
+            const vx = (x / 500) + 0.5 + Math.sin(elapsedTime + i * 0.1) * 0.5;
+            const vy = (y / 500) + 0.5 + Math.cos(elapsedTime + i * 0.1) * 0.5;
+            const vz = (z / 500) + 0.5;
+            const color = new THREE.Color().setRGB(vx % 1, vy % 1, vz % 1);
+            colors[index] = color.r;
+            colors[index + 1] = color.g;
+            colors[index + 2] = color.b;
+        }
+        particleSystem.geometry.attributes.color.needsUpdate = true;
+
+        renderer.render(scene, camera);
+    }
+
+    function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    }
+
+    window.addEventListener('resize', onWindowResize, false);
+
+    initScene();
+    createParticles();
+    animate();
+</script>
+</body>
+</html>

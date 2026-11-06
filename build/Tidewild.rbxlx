@@ -1,28 +1,13 @@
 <roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" version="4">
-  <Item class="Workspace" referent="RBX00000001">
-    <Properties>
-      <string name="Name">Workspace</string>
-      <bool name="StreamingEnabled">true</bool>
-    </Properties>
-  </Item>
-  <Item class="Lighting" referent="RBX00000002">
-    <Properties>
-      <string name="Name">Lighting</string>
-      <float name="ClockTime">14</float>
-      <float name="Brightness">2.5</float>
-      <bool name="GlobalShadows">true</bool>
-      <token name="Technology">4</token>
-    </Properties>
-  </Item>
-  <Item class="ReplicatedStorage" referent="RBX00000003">
+  <Item class="ReplicatedStorage" referent="RBX00000001">
     <Properties>
       <string name="Name">ReplicatedStorage</string>
     </Properties>
-    <Item class="Folder" referent="RBX00000004">
+    <Item class="Folder" referent="RBX00000002">
       <Properties>
         <string name="Name">Shared</string>
       </Properties>
-      <Item class="ModuleScript" referent="RBX00000005">
+      <Item class="ModuleScript" referent="RBX00000003">
         <Properties>
           <string name="Name">BattleEngine</string>
           <ProtectedString name="Source"><![CDATA[-- Pure, server-authoritative turn resolver. No Roblox instances are touched here, so it can be
@@ -404,7 +389,7 @@ return Battle
 ]]></ProtectedString>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="RBX00000006">
+      <Item class="ModuleScript" referent="RBX00000004">
         <Properties>
           <string name="Name">Config</string>
           <ProtectedString name="Source"><![CDATA[-- Global tuning values. Everything gameplay-related that you may want to tweak lives here.
@@ -466,7 +451,7 @@ return Config
 ]]></ProtectedString>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="RBX00000007">
+      <Item class="ModuleScript" referent="RBX00000005">
         <Properties>
           <string name="Name">CreatureFactory</string>
           <ProtectedString name="Source"><![CDATA[-- Creates, scales and levels creature instances. Instances are plain tables so they serialise
@@ -640,7 +625,7 @@ return Factory
 ]]></ProtectedString>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="RBX00000008">
+      <Item class="ModuleScript" referent="RBX00000006">
         <Properties>
           <string name="Name">CreatureModel</string>
           <ProtectedString name="Source"><![CDATA[-- Builds creature models. If ReplicatedStorage.CreatureModels.<SpeciesId> exists (a Model you made or
@@ -850,7 +835,7 @@ return CreatureModel
 ]]></ProtectedString>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="RBX00000009">
+      <Item class="ModuleScript" referent="RBX00000007">
         <Properties>
           <string name="Name">Creatures</string>
           <ProtectedString name="Source"><![CDATA[-- Original creature roster for Tidewild.
@@ -1093,7 +1078,7 @@ return Creatures
 ]]></ProtectedString>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="RBX0000000A">
+      <Item class="ModuleScript" referent="RBX00000008">
         <Properties>
           <string name="Name">Moves</string>
           <ProtectedString name="Source"><![CDATA[-- Original move list.
@@ -1209,7 +1194,7 @@ return Moves
 ]]></ProtectedString>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="RBX0000000B">
+      <Item class="ModuleScript" referent="RBX00000009">
         <Properties>
           <string name="Name">Net</string>
           <ProtectedString name="Source"><![CDATA[-- Single source of truth for remotes. The server creates them; clients wait for them.
@@ -1276,7 +1261,7 @@ return Net
 ]]></ProtectedString>
         </Properties>
       </Item>
-      <Item class="ModuleScript" referent="RBX0000000C">
+      <Item class="ModuleScript" referent="RBX0000000A">
         <Properties>
           <string name="Name">Types</string>
           <ProtectedString name="Source"><![CDATA[-- Original elemental type system.
@@ -1329,11 +1314,11 @@ return Types
       </Item>
     </Item>
   </Item>
-  <Item class="ServerScriptService" referent="RBX0000000D">
+  <Item class="ServerScriptService" referent="RBX0000000B">
     <Properties>
       <string name="Name">ServerScriptService</string>
     </Properties>
-    <Item class="Script" referent="RBX0000000E">
+    <Item class="Script" referent="RBX0000000C">
       <Properties>
         <string name="Name">Server</string>
         <ProtectedString name="Source"><![CDATA[-- Tidewild server entry point.
@@ -1383,11 +1368,11 @@ end)
 print(("[%s] server ready"):format(Config.GameName))
 ]]></ProtectedString>
       </Properties>
-      <Item class="Folder" referent="RBX0000000F">
+      <Item class="Folder" referent="RBX0000000D">
         <Properties>
           <string name="Name">Services</string>
         </Properties>
-        <Item class="ModuleScript" referent="RBX00000010">
+        <Item class="ModuleScript" referent="RBX0000000E">
           <Properties>
             <string name="Name">BattleService</string>
             <ProtectedString name="Source"><![CDATA[-- Runs wild and player-vs-player battles in the overworld. Battles happen where the encounter
@@ -1739,7 +1724,7 @@ return BattleService
 ]]></ProtectedString>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="RBX00000011">
+        <Item class="ModuleScript" referent="RBX0000000F">
           <Properties>
             <string name="Name">DataService</string>
             <ProtectedString name="Source"><![CDATA[-- Player save data with DataStore persistence and session caching.
@@ -1993,7 +1978,7 @@ return DataService
 ]]></ProtectedString>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="RBX00000012">
+        <Item class="ModuleScript" referent="RBX00000010">
           <Properties>
             <string name="Name">PlazaService</string>
             <ProtectedString name="Source"><![CDATA[-- Social hub systems inspired by "plaza" style lobbies: quick greetings that earn Plaza Coins,
@@ -2304,7 +2289,7 @@ return PlazaService
 ]]></ProtectedString>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="RBX00000013">
+        <Item class="ModuleScript" referent="RBX00000011">
           <Properties>
             <string name="Name">SpawnService</string>
             <ProtectedString name="Source"><![CDATA[-- Visible overworld spawns with temperament-driven AI (no random grass encounters).
@@ -2592,7 +2577,7 @@ return SpawnService
 ]]></ProtectedString>
           </Properties>
         </Item>
-        <Item class="ModuleScript" referent="RBX00000014">
+        <Item class="ModuleScript" referent="RBX00000012">
           <Properties>
             <string name="Name">WorldBuilder</string>
             <ProtectedString name="Source"><![CDATA[-- Generates a playable starter island (terrain, plaza hub, heal station, shop, spawn zones) the first
@@ -2805,15 +2790,15 @@ return WorldBuilder
       </Item>
     </Item>
   </Item>
-  <Item class="StarterPlayer" referent="RBX00000015">
+  <Item class="StarterPlayer" referent="RBX00000013">
     <Properties>
       <string name="Name">StarterPlayer</string>
     </Properties>
-    <Item class="StarterPlayerScripts" referent="RBX00000016">
+    <Item class="StarterPlayerScripts" referent="RBX00000014">
       <Properties>
         <string name="Name">StarterPlayerScripts</string>
       </Properties>
-      <Item class="LocalScript" referent="RBX00000017">
+      <Item class="LocalScript" referent="RBX00000015">
         <Properties>
           <string name="Name">Client</string>
           <ProtectedString name="Source"><![CDATA[-- Tidewild client entry point.
@@ -2856,7 +2841,7 @@ end
 Net.get("SpawnSnapshot").OnClientEvent:Connect(Renderer.applySnapshot)
 ]]></ProtectedString>
         </Properties>
-        <Item class="ModuleScript" referent="RBX00000018">
+        <Item class="ModuleScript" referent="RBX00000016">
           <Properties>
             <string name="Name">Controls</string>
             <ProtectedString name="Source"><![CDATA[-- Movement feel + overworld interaction.
@@ -3010,11 +2995,11 @@ return Controls
 ]]></ProtectedString>
           </Properties>
         </Item>
-        <Item class="Folder" referent="RBX00000019">
+        <Item class="Folder" referent="RBX00000017">
           <Properties>
             <string name="Name">UI</string>
           </Properties>
-          <Item class="ModuleScript" referent="RBX0000001A">
+          <Item class="ModuleScript" referent="RBX00000018">
             <Properties>
               <string name="Name">BattleUI</string>
               <ProtectedString name="Source"><![CDATA[-- Overworld battle UI. The world keeps running around you; this is just an overlay with the
@@ -3375,7 +3360,7 @@ return BattleUI
 ]]></ProtectedString>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="RBX0000001B">
+          <Item class="ModuleScript" referent="RBX00000019">
             <Properties>
               <string name="Name">HUD</string>
               <ProtectedString name="Source"><![CDATA[-- Always-on HUD: party strip, currencies, target hint, toasts, starter picker.
@@ -3642,7 +3627,7 @@ return HUD
 ]]></ProtectedString>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="RBX0000001C">
+          <Item class="ModuleScript" referent="RBX0000001A">
             <Properties>
               <string name="Name">PlazaUI</string>
               <ProtectedString name="Source"><![CDATA[-- Social layer: greeting wheel, chat bubbles, player interaction menu (battle / trade invites),
@@ -3956,7 +3941,7 @@ return PlazaUI
 ]]></ProtectedString>
             </Properties>
           </Item>
-          <Item class="ModuleScript" referent="RBX0000001D">
+          <Item class="ModuleScript" referent="RBX0000001B">
             <Properties>
               <string name="Name">Theme</string>
               <ProtectedString name="Source"><![CDATA[-- Tiny UI helper library so every screen shares one look.
@@ -4093,7 +4078,7 @@ return Theme
             </Properties>
           </Item>
         </Item>
-        <Item class="ModuleScript" referent="RBX0000001E">
+        <Item class="ModuleScript" referent="RBX0000001C">
           <Properties>
             <string name="Name">WorldRenderer</string>
             <ProtectedString name="Source"><![CDATA[-- Client-side rendering of everything creature-related:
@@ -4339,5 +4324,20 @@ return Renderer
         </Item>
       </Item>
     </Item>
+  </Item>
+  <Item class="Workspace" referent="RBX0000001D">
+    <Properties>
+      <string name="Name">Workspace</string>
+      <bool name="StreamingEnabled">true</bool>
+    </Properties>
+  </Item>
+  <Item class="Lighting" referent="RBX0000001E">
+    <Properties>
+      <string name="Name">Lighting</string>
+      <float name="ClockTime">14</float>
+      <float name="Brightness">2.5</float>
+      <bool name="GlobalShadows">true</bool>
+      <token name="Technology">4</token>
+    </Properties>
   </Item>
 </roblox>

@@ -1,0 +1,28 @@
+{
+  "name": "ParticleOrb",
+  "tree": {
+    "$className": "DataModel",
+    "ServerScriptService": {
+      "OrbServer": {
+        "$path": "src/server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "OrbClient": {
+          "$path": "src/client"
+        }
+      }
+    },
+    "Lighting": {
+      "$properties": {
+        "ClockTime": 0,
+        "Brightness": 0,
+        "GlobalShadows": false,
+        "Ambient": { "Color3": [0, 0, 0] },
+        "OutdoorAmbient": { "Color3": [0.08, 0.08, 0.1] },
+        "Technology": "Future"
+      }
+    }
+  }
+}
